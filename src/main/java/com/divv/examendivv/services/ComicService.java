@@ -1,11 +1,9 @@
 package com.divv.examendivv.services;
 
-import java.util.List;
-import com.divv.examendivv.models.Colaborator;
-import com.divv.examendivv.models.Mcharacter;
+import java.util.Map;
 
 public interface ComicService
 {
-    public List<Colaborator> aggregateColaborator(String characterName);
-    public List<Mcharacter> aggregateMcharacter(String characterName);
+    public Map<String, Object> aggregateColaborator(String characterName);
+    public Map<String, Object> aggregateMcharacter(String characterName);
 }

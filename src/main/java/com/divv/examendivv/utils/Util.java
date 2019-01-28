@@ -6,6 +6,8 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicLong;
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Util
 {
@@ -14,6 +16,7 @@ public class Util
     private static final String host = "gateway.marvel.com";
     private static final String pathCharacters = "/v1/public/characters";
     private static final String pathComics = pathCharacters + "/%s/comics";
+    private static final String limitNumber = "100";
     private static final String apikeyPu = "8bb92377cb92a1c1f27aae9ceeaaa013";
     private static final String apikeyPr = "c455a24172faf7160d366b37dcb6fc8ddc19d68a";
     public static final String ironman = "Iron Man";
@@ -78,6 +81,7 @@ public class Util
             .scheme(schemeHttp)
             .host(host)
             .path(String.format(pathComics, id))
+            .queryParam("limit", limitNumber)
             .queryParam("apikey", apikeyPu)
             .queryParam("ts", tsP)
             .queryParam("hash", getMd5(tsP))
@@ -107,5 +111,15 @@ public class Util
         }
 
         return String.format("%032x", new BigInteger(1, md5.digest()));
+    }
+
+    // Character's name method.
+    public static String getCurrentDate()
+    {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String strDate = sdf.format(cal.getTime());
+
+        return strDate;
     }
 }

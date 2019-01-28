@@ -2,6 +2,9 @@ package com.divv.examendivv.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import com.divv.examendivv.business.*;
@@ -17,7 +20,7 @@ public class ComicServiceImpl implements ComicService
     @Autowired
     private ComicRepository comicRepository;
 
-    public List<Colaborator> aggregateColaborator(String characterName)
+    public Map<String, Object> aggregateColaborator(String characterName)
     {
         // Call to BL.
         CharacterBL characterBL = new CharacterBL();
@@ -50,11 +53,19 @@ public class ComicServiceImpl implements ComicService
             listColaborator = this.comicRepository.aggregateColaborator();
         }
 
+        // Transform data to output expected.
+        Map<String, Object> mapColaborator = listColaborator.stream()
+            .collect(Collectors.toMap(colaborator -> colaborator.getId(),
+            colaborator -> colaborator.getNames()));
+
+        // Date is added.
+        mapColaborator.put("last_sync", Util.getCurrentDate());
+
         // Return documents.
-        return listColaborator;
+        return mapColaborator;
     }
 
-    public List<Mcharacter> aggregateMcharacter(String characterName)
+    public Map<String, Object> aggregateMcharacter(String characterName)
     {
         // Call to BL.
         CharacterBL characterBL = new CharacterBL();
@@ -66,8 +77,8 @@ public class ComicServiceImpl implements ComicService
         // Comics list.
         List<Comic> listComic = new ArrayList<Comic>();
 
-        // Colaborators list.
-        List<Mcharacter> listInteract = new ArrayList<Mcharacter>();
+        // Marvel character list.
+        List<Mcharacter> listMcharacter = new ArrayList<Mcharacter>();
 
         if (nameCharacter != "")
         {
@@ -84,10 +95,17 @@ public class ComicServiceImpl implements ComicService
             });
     
             // Get colaborators list grouped by role.
-            listInteract = this.comicRepository.aggregateMcharacter();
+            listMcharacter = this.comicRepository.aggregateMcharacter();
         }
 
+        // Transform data to output expected.
+        Map<String, Object> mapMcharacter = new HashMap<String, Object>();
+        mapMcharacter.put("characters", listMcharacter);
+
+        // Date is added.
+        mapMcharacter.put("last_sync", Util.getCurrentDate());
+
         // Return documents.
-        return listInteract;
+        return mapMcharacter;
     }
 }

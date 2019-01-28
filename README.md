@@ -16,10 +16,12 @@ Solución propuesta al examen APIMarvel por Diego Iván Valencia Velázquez.
     http://localhost:8080/marvel/characters/ironman
     http://localhost:8080/marvel/characters/capamerica
 
-4. El desarrollo tiene incorporado un mecanismo de seguridad provisto por "Spring Security", en la consola de maven aparecerá la clave de acceso al API.
+4. El desarrollo tiene incorporado un mecanismo de seguridad provisto por "Spring Security".
+En la consola de maven aparecerá la clave de acceso al API con una cadena de texto similar a
+"Using generated security password: 859de41c-c9b1-4c8f-b4d8-ed5ec2ee2003".
 
 U: user
-P: la generada por spring security a través de la consola de maven.
+P: la generada por spring security y que se muestra a través de la consola de maven.
 
 #Notas
 1. El sistema operativo donde se ejecute debe estar basado en Unix.
