@@ -16,6 +16,11 @@ Solución propuesta al examen APIMarvel por Diego Iván Valencia Velázquez.
     http://localhost:8080/marvel/characters/ironman
     http://localhost:8080/marvel/characters/capamerica
 
+4. El desarrollo tiene incorporado un mecanismo de seguridad provisto por "Spring Security", en la consola de maven aparecerá la clave de acceso al API.
+
+U: user
+P: la generada por spring security a través de la consola de maven.
+
 #Notas
 1. El sistema operativo donde se ejecute debe estar basado en Unix.
 2. Si Maven no está integrado al PATH, se debe descargar de la página oficial y modificar en los archivos "assemble.sh" y "avengers.sh" la ruta en donde está contenida la carpeta "bin".
