@@ -10,6 +10,11 @@ Solución propuesta al examen APIMarvel por Diego Iván Valencia Velázquez.
 #Instrucciones
 1. Ejecutar el archivo assemble.sh
 2. Ejecutar el archivo avengers.sh (levantará mongo como servicio).
+3. Ingresar a
+    http://localhost:8080/marvel/colaborators/ironman
+    http://localhost:8080/marvel/colaborators/capamerica
+    http://localhost:8080/marvel/characters/ironman
+    http://localhost:8080/marvel/characters/capamerica
 
 #Notas
 1. El sistema operativo donde se ejecute debe estar basado en Unix.
