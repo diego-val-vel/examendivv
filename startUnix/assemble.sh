@@ -1,4 +1,7 @@
 #!/bin/sh
+cd..
+
+#Maven con path
 mvn clean compile
 
 #Maven sin path
